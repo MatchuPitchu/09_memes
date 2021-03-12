@@ -5,7 +5,8 @@ import './App.css';
 import Spinner from './components/Spinner';
 import ImagesAll from './components/ImagesAll';
 import Image from './components/Image';
-import Input from './components/Input';
+
+// Repo of Jorge as an example: https://github.com/weyvern/meme-generator-workshop
 
 const App = () => {
   const [memes, setMemes] = useState([]);
