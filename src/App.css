@@ -10,3 +10,41 @@
   height: 200px;
   object-fit: scale-down;
 }
+
+.linkToHome {
+  background-color: #ccc;
+  width: 100%;
+  border-radius: 0;
+  margin-top: 50px;
+  -webkit-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  transition: all 2s ease;
+}
+
+.linkToHome:hover {
+  background-color: #b6ac95;
+  width: 50%;
+  min-width: 100px;
+  border-radius: 3px;
+  margin: 50px auto;
+}
+
+.btn-back,
+.btn-back:hover,
+.btn-back:focus {
+  display: inline-block;
+  text-decoration: none !important;
+  color: #ffffff;
+  padding: 10px;
+  min-width: 100px;
+  border: 0;
+  box-shadow: 0;
+}
+
+.relative {
+  position: relative;
+  top: 30px;
+  background-color: #fff;
+  opacity: 1;
+}
