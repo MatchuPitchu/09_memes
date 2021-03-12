@@ -7,6 +7,7 @@ import ImagesAll from './components/ImagesAll';
 import Image from './components/Image';
 
 // Repo of Jorge as an example: https://github.com/weyvern/meme-generator-workshop
+// Video mit Erklärung API POST für imgFlip (https://imgflip.com/api): https://www.youtube.com/watch?v=rtQKP1we-Dk&t=696s
 
 const App = () => {
   const [memes, setMemes] = useState([]);
