@@ -42,6 +42,41 @@
   box-shadow: 0;
 }
 
+/* Textfield */
+.textfield {
+  padding: 10px;
+  border: solid #c8ccd0 1px;
+  border-radius: 3px 0px 0px 3px;
+  -webkit-transition: box-shadow linear 0.2s;
+  transition: box-shadow linear 0.2s;
+  border-right: 0;
+}
+
+.textfield:focus {
+  outline: none;
+  border-color: #6c757d;
+  box-shadow: 0 0 10px #6c757d;
+}
+
+.textfield:hover {
+  border-color: #6c757d;
+  box-shadow: 0 0 10px #6c757d;
+}
+
+.btn-meme {
+  background-color: #b6ac95;
+  color: #fff;
+  padding: 10px;
+  min-width: 100px;
+  border: 1px solid #6c757d;
+  box-shadow: 0;
+}
+
+.btn-meme:hover {
+  background-color: #fff;
+  color: #191919;
+}
+
 .relative {
   position: relative;
   top: 30px;

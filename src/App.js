@@ -10,7 +10,7 @@ import Image from './components/Image';
 // Video mit Erklärung API POST für imgFlip (https://imgflip.com/api): https://www.youtube.com/watch?v=rtQKP1we-Dk&t=696s
 
 const App = () => {
-  const [memes, setMemes] = useState([]);
+  const [templates, setTemplates] = useState([]);
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState('');
 
@@ -20,12 +20,12 @@ const App = () => {
       .then(res => res.json())
       .then(data => {
         setLoading(false);
-        setMemes(data.data.memes);
+        setTemplates(data.data.memes);
       })
       .catch(err => setError(err));
   }, [])
 
-  if(!loading) console.log(memes);
+  if(!loading) console.log(templates);
 
   if(loading)
     return <Spinner />;
@@ -39,8 +39,6 @@ const App = () => {
       <Switch>
         <Route path="/:imgID">
             <div className="row bg-light border border-dark mt-4 pb-2">
-              <h2 className="mt-3">Creation time</h2>
-              <p className="fst-italic mb-3">Create your appropriate text</p>
               <Image />
             </div>
         </Route>
@@ -48,7 +46,7 @@ const App = () => {
           <div className="row bg-light border border-dark mt-5">
             <h2 className="mt-3">Choose your picture</h2>
             <p className="fst-italic mb-3">Click on your desired picture</p>
-            {memes && memes.map(img => <ImagesAll key={img.id} data={img} />)
+            {templates && templates.map(template => <ImagesAll key={template.id} data={template} />)
             }
           </div>
         </Route>
