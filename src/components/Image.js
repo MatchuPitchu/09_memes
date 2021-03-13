@@ -107,9 +107,26 @@ const Image = () => {
     if (memeURL)
         return (
             <div>
-                <div className="row justify-content-around mt-3 mb-3">
+                <p className="fst-italic mb-3">Do you want to change the text?</p>
+                    {/* Hier erstelle ich Array mit sovielen Elementen, wie img.box_count aus API vorgibt */}
+                    {text.map((item, index) => {
+                    return (
+                        <div key={index} className="input-group mb-3">
+                            <span className="input-group-text" id="inputGroup-sizing-default">{index + 1}</span>
+                            <input 
+                                type="text"
+                                className="form-control textfield"
+                                aria-label="caption"
+                                value={item} 
+                                onChange={(event) => updateText(event, index)} />
+                        </div>
+                        )
+                    }
+                    )}                
+                <form onSubmit={generateMeme} className="row justify-content-around mb-3">
+                    <button type="submit" className="col-auto btn-meme">Add new text</button>
                     <button className="col-auto btn-meme" onClick={shareMeme}>Share meme</button>
-                </div>
+                </form>
                 <img src={memeURL} alt={`meme ${img.name}`}/>
             </div>
         );
