@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // library, um Bild-Datei zu speichern
 import { saveAs } from 'file-saver';
 import Spinner from './Spinner';
@@ -136,6 +137,9 @@ const Image = () => {
                 <button type="submit" className="col-auto btn-meme">Generate meme</button>
             </form>
             <img src={img.url} className="img-fluid" alt={img.name}/>
+            <div className="text-center linkToHome">
+                <Link to={'/'} className="btn-back">Restart your creation</Link>
+            </div>
         </div>
     );
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from "react-router";
-import { Link } from 'react-router-dom';
 import './App.css';
 import Spinner from './components/Spinner';
 import ImagesAll from './components/ImagesAll';
@@ -43,7 +42,7 @@ const App = () => {
             </div>
         </Route>
         <Route path="/">
-          <div className="row bg-light border border-dark mt-5">
+          <div className="row bg-light border border-dark mt-5 mb-5">
             <h2 className="mt-3">Choose your picture</h2>
             <p className="fst-italic mb-3">Click on your desired picture</p>
             {templates && templates.map(template => <ImagesAll key={template.id} data={template} />)
@@ -51,9 +50,6 @@ const App = () => {
           </div>
         </Route>
       </Switch>
-      <div className="text-center linkToHome">
-            <Link to={'/'} className="btn-back">Restart your creation</Link>
-      </div>
     </div>
   );
 }

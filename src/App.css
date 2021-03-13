@@ -12,9 +12,9 @@
 }
 
 .linkToHome {
-  background-color: #ccc;
+  background-color: #b6ac95;
   width: 100%;
-  border-radius: 0;
+  border: 1px solid #6c757d;
   margin-top: 50px;
   -webkit-transition: all 2s ease;
   -moz-transition: all 2s ease;
@@ -23,19 +23,27 @@
 }
 
 .linkToHome:hover {
-  background-color: #b6ac95;
+  background-color: #fff;
   width: 50%;
   min-width: 100px;
-  border-radius: 3px;
   margin: 50px auto;
 }
 
-.btn-back,
+.btn-back {
+  display: inline-block;
+  text-decoration: none !important;
+  color: #fff;
+  padding: 10px;
+  min-width: 100px;
+  border: 0;
+  box-shadow: 0;
+}
+
 .btn-back:hover,
 .btn-back:focus {
   display: inline-block;
   text-decoration: none !important;
-  color: #ffffff;
+  color: #191919;
   padding: 10px;
   min-width: 100px;
   border: 0;
