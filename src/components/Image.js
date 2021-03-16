@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
+// forwardRef: https://reactjs.org/docs/forwarding-refs.html
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-// library, um Bild-Datei zu speichern
-import { saveAs } from 'file-saver';
 import Spinner from './Spinner';
 
-const Image = () => {
+const Image = forwardRef( (props, ref) => {
     let { imgID } = useParams();
     const [img, setImg] = useState({});
     const [text, setText] = useState([]);
@@ -62,12 +61,13 @@ const Image = () => {
 
     const generateMeme = (e) => {
         e.preventDefault();
+        console.log(process.env.TEST)
         const params = {
             // with env. is not working - why?
-            // username: process.env.REACT_APP_USERNAME,
-            // password: process.env.REACT_APP_PASSWORD,
-            username: 'MatchuPitchu',
-            password: 'wbs_2021',
+            username: process.env.REACT_APP_USERNAME,
+            password: process.env.REACT_APP_PASSWORD,
+            // username: 'MatchuPitchu',
+            // password: 'wbs_2021',
             template_id: imgID
         }
 
@@ -92,11 +92,6 @@ const Image = () => {
         }
         createMeme();
     }
-
-    const shareMeme = () => {
-        saveAs(memePageURL, `meme_${Date.now()}.jpg`);
-    };
-
 
     if (loading)
         return <Spinner />;
@@ -125,9 +120,10 @@ const Image = () => {
                     )}                
                 <form onSubmit={generateMeme} className="row justify-content-around mb-3">
                     <button type="submit" className="col-auto btn-meme">Add new text</button>
-                    <button className="col-auto btn-meme" onClick={shareMeme}>Share meme</button>
+                    <button className="col-auto btn-meme" onClick={props.shareMeme}>Share meme</button>
                 </form>
-                <img src={memeURL} alt={`meme ${img.name}`}/>
+                {/* Mit ref={ref} wird das img-Element zum imperativen Element, was in useRef (siehe App.js) eingesetzt wird */}
+                <img ref={ref} src={memeURL} alt={`meme ${img.name}`}/>
             </div>
         );
 
@@ -159,6 +155,6 @@ const Image = () => {
             </div>
         </div>
     );
-}
+});
 
 export default Image;

@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+// library, um auf das fertige Bild aus der DOM zuzugreifen
+// https://github.com/tsayen/dom-to-image
+import domtoimage from 'dom-to-image';
+// library, um Bild-Datei zu speichern
+import { saveAs } from 'file-saver';
 import { Route, Switch } from "react-router";
 import './App.css';
 import Spinner from './components/Spinner';
@@ -24,6 +29,16 @@ const App = () => {
       .catch(err => setError(err));
   }, [])
 
+  const memeToShare = useRef();
+  // Hier sehe ich, dass mein Image in Image.js erst zu memeToShare.current wird, 
+  // wenn ich das Image mit onClick "Generate Meme"-Button, was shareMeme-Funktion
+  // hier drunter auslöst, festgemacht habe
+  console.log(memeToShare);
+  const shareMeme = async () => {
+    const blob = await domtoimage.toBlob(memeToShare.current);
+    saveAs(blob, `meme_${Date.now()}`);
+  };
+
   if(!loading) console.log(templates);
 
   if(loading)
@@ -38,7 +53,7 @@ const App = () => {
       <Switch>
         <Route path="/:imgID">
             <div className="row bg-light border border-dark mt-4 pb-2">
-              <Image />
+              <Image ref={memeToShare} shareMeme={shareMeme} />
             </div>
         </Route>
         <Route path="/">
