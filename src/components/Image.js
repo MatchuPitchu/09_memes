@@ -9,7 +9,6 @@ const Image = forwardRef( (props, ref) => {
     const [img, setImg] = useState({});
     const [text, setText] = useState([]);
     const [memeURL, setMemeURL] = useState(null);
-    const [memePageURL, setMemePageURL] = useState(null);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState('');
     
@@ -88,7 +87,6 @@ const Image = forwardRef( (props, ref) => {
             const json = await response.json();
             console.log(json);
             setMemeURL(json.data.url);
-            setMemePageURL(json.data.page_url);
         }
         createMeme();
     }
